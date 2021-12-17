@@ -9,40 +9,97 @@
   <body>
     <!-- Does this need a navbar? I don't think so, but can circle back to it -->
     <h1 id="branding-text">GreenTrack</h1>
+
+    <!-- This probably needs to be a form -->
     <section class="balance__inputs">
       <h1 class="section--header">Account Balances</h1>
       <label for="checking--balance">Checking</label>
-      <input type="text" class="balance" data-checking />
+      <input 
+        type="number"
+        id="checking--balance" 
+        class="balance" 
+        name="checking--balance" 
+        data-checking />
       <label for="savings--balance">Savings</label>
-      <input type="text" class="balance" data-savings />
+      <input 
+        type="number"
+        id="savings--balance" 
+        class="balance" 
+        name="savings--balance" 
+        data-savings />
     </section>
 
+    <!-- This doesn't need inputs, it needs spans maybe? -->
     <section class="balance__inputs">
       <h1 class="section--header">Spending Activity</h1>
       <label for="income">Income</label>
-      <input type="text" class="balance income" money-income />
+      <input 
+        type="number"
+        id="income" 
+        class="balance income" 
+        name="income" 
+        data-money-income />
       <label for="spending">Outgoing</label>
-      <input type="text" class="balance spending" money-spent />
+      <input 
+        type="number" 
+        id="spending"
+        class="balance spending" 
+        name="spending" 
+        data-money-spent />
     </section>
 
+    <!-- TODO: Add method (post or get?) -->
     <form id="form">
       <div class="form__control">
+
+        <!-- TODO: Maybe for button a ternary could be used in JS file to switch the text & type -->
         <button class="swap--transaction">Income</button>
         <button class="swap--transaction">Expenditure</button>
+
         <label for="description">Description</label>
         <input
           type="text"
-          id="amount--text"
+          id="description"
+          name="description"
           placeholder="Enter Description"
+          required
         />
         <label for="account">Company/Name</label>
-        <input type="text" id="account--name" placeholder="Paid to:">
+        <input 
+          type="text" 
+          id="account" 
+          name="account" 
+          placeholder="Paid to:">
         <label for="date">Date</label>
-        <input type="text" id="date" placeholder="Select Date" /> <!-- Add icon for calendar and make this interactive -->
+        <input 
+          type="date" 
+          id="date" 
+          name="date"
+          required 
+          placeholder="Select Date" /> <!-- TODO: customize icon for calendar and make this interactive -->
         <label for="amount">Amount</label>
-        <input type="text" id="amount" placeholder="Amount" /> <!-- Where should the deposit / spend selector go? -->  
+        <input 
+          type="number" 
+          id="amount" 
+          name="amount"
+          required
+          min="1" 
+          placeholder="Amount" /> <!-- TODO: Where should the deposit / spend selector go? -->
+        <label for="account--type">Which Account is this Transaction For?</label>
+        <input
+          type="radio"
+          id="checking--account"
+          name="account--selector"
+          value="checking"
+          required />
+        <input
+          type="radio"
+          id="savings--account"
+          name="account--selector"
+          value="savings"
+          required />
       </div>
-      <button>Add Transaction</button> <!-- Needs much more in the button tag -->
+      <button type="submit">Add Transaction</button> <!-- TODO: Needs much more in the button tag -->
     </form>
     </table>
   </body>
